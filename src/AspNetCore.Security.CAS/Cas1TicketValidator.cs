@@ -39,7 +39,7 @@ namespace AspNetCore.Security.CAS
                 new Claim(ClaimTypes.Name, validatedUserName, ClaimValueTypes.String, issuer)
             };
 
-            var identity = new ClaimsIdentity(claims, options.ClaimsIssuer);
+            var identity = new ClaimsIdentity(claims, issuer);
             var ticketContext = new CasCreatingTicketContext(context, scheme, options, new ClaimsPrincipal(identity), properties, validatedUserName);
 
             await options.Events.CreatingTicket(ticketContext);
